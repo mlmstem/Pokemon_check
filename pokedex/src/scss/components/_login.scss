@@ -1,0 +1,22 @@
+.login{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+
+    .login-btn {
+        background-color: transparent;
+        color: white;
+        font-size: 1.5rem;
+        text-transform: uppercase;
+        padding: 1rem;
+        border: 2px solid white;
+        box-shadow: inset;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+    }
+    
+}

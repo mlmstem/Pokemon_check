@@ -23,6 +23,8 @@ function App() {
 
   useEffect (() =>{
     if(toasts.length){
+      
+
       toasts.forEach((message : string) =>{
         toast(message);
       })
