@@ -58,12 +58,11 @@ nav{
     position: absolute;
     z-index: 0;
     bottom: 0;
-    left: 1rem;
+    left: 0.1rem;
     background-color: white;
     width: 20%;
     height: calc((4px)/2);
     mix-blend-mode: initial;
-    left: 1rem;
     pointer-events: none;
     transition: 0.5s ease-in-out;
     &:nth-child(1){
