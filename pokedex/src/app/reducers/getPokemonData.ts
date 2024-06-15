@@ -25,7 +25,7 @@ async(pokemons : genericPokemonType[]) =>{
             )
                 
             // @ts-expect-error
-            let image : string = images[data.id]
+            let image: string = images[data.id];
             // console.log({data});
             if(!image){
                 //@ts-expect-error
