@@ -21,7 +21,11 @@ function PokemonCardGrid({pokemons}: {pokemons : userPokemonsType[]}) {
                 <div className="pokemon-card-list">
                 {location.pathname.includes("/pokemon") || location.pathname.includes("/search") ? <FaPlus className='plus' onClick={()=> dispatch(addPokemonToList(data))}/> 
                 : (
-                  <FaTrash className='trash' onClick={() =>dispatch(removePokemon({id:data.firebaseId!})) }/>
+                  <FaTrash className='trash' onClick={
+                    async () =>{
+                      await dispatch(removePokemon({id:data.firebaseId!}));
+                      dispatch(setToast("Pokemon removed successfully."));
+                    } }/>
                 )}
                 </div>
                 <div className="pokemon-card-compare"><IoGitCompare  onClick={() => {
