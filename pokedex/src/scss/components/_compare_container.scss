@@ -15,7 +15,8 @@
             padding: 2rem;
             justify-content: center;
             align-items: center;
-            border: none;
+            border: 1px solid var(--accent-color);
+            margin: 1rem;
             background-color: var(--accent-color);
             svg{
                 font-size: 5rem;
