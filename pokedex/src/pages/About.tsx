@@ -1,7 +1,7 @@
 import React from 'react'
 import Wrapper from '../sections/Wrapper';
 import fluffcat from "../assets/fluffCat.png"
-import { FaGithub, FaLinkedin } from 'react-icons/fa';
+import { FaGithub} from 'react-icons/fa';
 
 function About() {
   return (

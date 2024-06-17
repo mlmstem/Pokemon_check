@@ -1,7 +1,6 @@
 import { AppTypeInitialState } from "../../utils/Types";
 import { createSlice } from "@reduxjs/toolkit";
-import { getInitialPokemonData } from "../reducers/getInitialPokemonData";
-import { stat } from "fs";
+
 import { pokemonTabs } from "../../utils/Constant";
 const initialState : AppTypeInitialState ={
     toasts : [],

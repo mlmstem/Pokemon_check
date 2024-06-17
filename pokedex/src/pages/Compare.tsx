@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import Wrapper from '../sections/Wrapper'
-import { useAppDispatch, useAppSelector } from '../app/hooks'
+import {useAppSelector } from '../app/hooks'
 import CompareContainer from '../components/CompareContainer';
 
 

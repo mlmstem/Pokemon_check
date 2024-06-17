@@ -59,65 +59,81 @@ function Pokemon() {
 
   const getPokemonInfo = useCallback(
     async (image: string) => {
-      const { data } = await axios.get(`${pokemonRoute}/${params.id}`);
-      const { data: dataEncounters } = await axios.get(
-        data.location_area_encounters
-      );
-      const {
-        data: {
-          evolution_chain: { url: evolutionURL },
-        },
-      } = await axios.get(`${pokemonSpeciesRoute}/${data.id}`);
-      const { data: evolutionData } = await axios.get(evolutionURL);
-
-      const encounters: string[] = [];
-      dataEncounters.forEach((encounter: any) => {
-        encounters.push(
-          encounter.location_area.name.toUpperCase().split("-").join(" ")
-        );
-      });
-      
-      const pokemonAbilities: { abilities: string[]; moves: string[] } = {
-        abilities: data.abilities.map(
-          ({ ability }: { ability: { name: string } }) => ability.name
-        ),
-        moves: data.moves.map(
-          ({ move }: { move: { name: string } }) => move.name
-        ),
-      };
-      const evolution = getEvolutionData(evolutionData.chain);
-      const evolutionLevel = evolution.find(
-        ({ pokemon }) => pokemon.name === data.name
-      ).level;
-      dispatch(setCurrentPokemon({
-        id: data.id,
-        name: data.name,
-        types: data.types.map(
-          ({ type: { name } }: { type: { name: string } }) => name
-        ),
-        image,
-        stats: data.stats.map(
-          ({
-            stat,
-            base_stat,
-          }: {
-            stat: { name: string };
-            base_stat: number;
-          }) => ({
-            name: stat.name,
-            value: base_stat,
-          })
-        ),
-        encounters,
-        evolutionLevel,
-        evolution,
-        pokemonAbilities,
-      }));
+      try {
+        const { data } = await axios.get(`${pokemonRoute}/${params.id}`);
+        const { data: dataEncounters } = await axios.get(data.location_area_encounters);
+  
+        console.log(`${pokemonSpeciesRoute}/${data.id}`);
+        
+        let evolutionURL;
+        if (data.id < 1000) {
+          const {
+            data: {
+              evolution_chain: { url },
+            },
+          } = await axios.get(`${pokemonSpeciesRoute}/${data.id}`);
+          evolutionURL = url;
+        } else {
+          const { data: pokemonDataAgain } = await axios.get(`${pokemonRoute}/${data.id}`);
+          evolutionURL = pokemonDataAgain.evolution_chain.url;
+        }
+  
+        const { data: evolutionData } = await axios.get(evolutionURL);
+  
+        const encounters: string[] = [];
+        dataEncounters.forEach((encounter: any) => {
+          encounters.push(
+            encounter.location_area.name.toUpperCase().split("-").join(" ")
+          );
+        });
+  
+        const pokemonAbilities: { abilities: string[]; moves: string[] } = {
+          abilities: data.abilities.map(
+            ({ ability }: { ability: { name: string } }) => ability.name
+          ),
+          moves: data.moves.map(
+            ({ move }: { move: { name: string } }) => move.name
+          ),
+        };
+  
+        const evolution = getEvolutionData(evolutionData.chain);
+        const evolutionLevel = evolution?.find(
+          ({ pokemon }) => pokemon.name === data.name
+        )?.level;
+  
+        dispatch(setCurrentPokemon({
+          id: data.id,
+          name: data.name,
+          types: data.types.map(
+            ({ type: { name } }: { type: { name: string } }) => name
+          ),
+          image,
+          stats: data.stats.map(
+            ({
+              stat,
+              base_stat,
+            }: {
+              stat: { name: string };
+              base_stat: number;
+            }) => ({
+              name: stat.name,
+              value: base_stat,
+            })
+          ),
+          encounters,
+          evolutionLevel,
+          evolution,
+          pokemonAbilities,
+        }));
+      } catch (error) {
+        console.error("Error fetching Pokémon data:", error);
+      }
     },
     [getEvolutionData, params.id, dispatch]
   );
 
   useEffect(() => {
+  
     const imageElemet = document.createElement("img");
     // @ts-ignore
     imageElemet.src = images[params.id];

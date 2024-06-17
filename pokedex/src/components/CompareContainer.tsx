@@ -1,7 +1,6 @@
-import React from 'react'
-import { pokemonTypeInterface, userPokemonsType } from '../utils/Types'
-import { FaPlus } from 'react-icons/fa'
-import { getHeapStatistics } from 'v8';
+import React from 'react';
+import { pokemonTypeInterface, userPokemonsType } from '../utils/Types';
+import { FaPlus } from 'react-icons/fa';
 import { pokemonStatType } from '../utils/Types';
 import { pokemonTypes } from '../utils/getPokemonTypes';
 import { useAppDispatch } from '../app/hooks';

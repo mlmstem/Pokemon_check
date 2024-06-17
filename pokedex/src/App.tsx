@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react'
 import Navbar from './sections/Navbar'
 import Footer from './sections/Footer'
-import Wrapper from './sections/Wrapper'
 import Background from './components/Background'
 import "./scss/index.scss";
 import Search from './pages/Search'
@@ -10,7 +9,7 @@ import Mylist from './pages/Mylist'
 import About from './pages/About'
 import Compare from './pages/Compare'
 import Pokemon from './pages/Pokemon'
-import { ToastContainer, ToastOptions, toast } from 'react-toastify'
+import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
 import { useAppDispatch, useAppSelector } from './app/hooks'
 import { onAuthStateChanged } from 'firebase/auth'

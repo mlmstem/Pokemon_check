@@ -1,5 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { types } from "util";
+
 import { pokemonStatsType, pokemonTypeInterface, userPokemonsType } from "../../utils/Types";
 import { RootState } from "../store";
 import { setToast } from "../slices/AppSlice";
