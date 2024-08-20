@@ -1,4 +1,4 @@
 # Pokemon-Fight
 
 ## Tech Stack
-  **ReactJS** **NEXTJS**, **Redux**, **TailwindCSS**, **SCSS**, **Firebase**, **PokeAPI**
+  **ReactJS** **NEXTJS**, **Redux**, **TailwindCSS**, **SCSS**, **Firebase**, **PokeAPI**, **typescript**
