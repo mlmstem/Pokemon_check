@@ -6,3 +6,7 @@
 
 ## Tech Stack
   **ReactJS** **NEXTJS**, **Redux**, **TailwindCSS**, **SCSS**, **Firebase**, **PokeAPI**, **typescript**
+
+  ***Redux design:*** 
+  Reducer architexture: 
+  
